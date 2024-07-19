@@ -1,0 +1,453 @@
+1. program to find even and odd.
+
+
+#include <bits/stdc++.h>
+using namespace std;
+void isEvenOdd(int num)
+{
+    if(num%2==0) cout<<"Even";
+    else cout<<"Odd";
+}
+
+int main()
+{
+    int num;
+    cout<<"Enter the number: ";
+    cin>>num;
+    
+    isEvenOdd(num);
+
+    return 0;
+}
+
+
+__________________________________________________________________________
+
+2. mujhe user se ek string input mai lena hai agr wo mon-sat weekday sun holiday invalid day
+
+#include <bits/stdc++.h>
+using namespace std;
+
+string isweekday(string day)
+{
+   
+    if(day=="monday"||day=="tuesday"||day=="wednesday"||day=="thusday"||day=="friday") {
+        return "weekday";
+    }
+    else if(day=="saturday"||day=="sunday"){
+        return "weekend";
+    }
+    else{
+        return "invalid";
+    }
+}
+
+int main()
+{
+    string day;
+    cout<<"Enter the day: ";
+    cin>>day;
+   
+   transform(day.begin(), day.end(), day.begin(),::tolower);
+  cout<<  isweekday(day) <<endl;
+ 
+    return 0;
+}
+
+
+ ____________________________________________________________________________________
+
+
+3. 3.user product ek string enter karega
+LUx Lux LuX = Soap
+ViVel  =Soap
+lIFEbOUY =soap
+
+gooday =biscuit
+snacks = biscuit
+marigold = biscuit
+
+Axe = perfume
+Vellavita =perfume
+fog = perfume
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+string product(string str)
+{
+    
+    if(str=="lux"||str=="vivel"||str=="lifeboy"){
+        return "soap";
+    }
+    else if(str=="gooday"||str=="snacks"||str=="marigold"){
+        return "biscuit";
+    }
+    else if(str=="Axe"||str=="Vellavita"||str=="fog"){
+        return "perfume";
+    }
+    else { return "wrong product";}
+}
+
+int main()
+{
+    string str;
+    cout<<"Enter the string: ";
+    cin>>str;
+    
+     transform(str.begin(), str.end(), str.begin(),::tolower);
+    cout<<product(str);
+
+    return 0;
+}
+ __________________________________________________________________________________________________________________
+
+4.  4.agar user input karta hai a e i o u vowel or else constants 0 1 2 3 4 5 numbers  #$%^&*(()!>:<) special characters
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void vovels(char ch);
+void number(char ch);
+void specialchar(char ch);
+
+
+void vovels(char ch)
+{
+    if(ch>='a'&& ch<='z'||ch>='A'&& ch<='Z'){
+        
+     if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u' ||
+      ch=='A'||ch=='E'||ch=='I'||ch=='O'||ch=='U') 
+     {
+        cout<<"vovels";
+     }
+     else { cout<<"consonents"; }
+    }
+    else{ number(ch); }
+}
+
+void number(char ch)
+{
+    if(ch>='0' && ch<='9') {cout<<"number";}
+    else { specialchar(ch); }
+}
+void specialchar(char ch)
+{
+    if ( (int(ch)>=33 && int(ch)<=47) || (int(ch)>=58 && int(ch)<=64) ||
+       (int(ch)>=91 && int(ch)<=96)||(int(ch)>=123 && int(ch)<=126) )
+      { 
+      cout<<"special charactor"; }
+    else{ cout<<"invalid no:"; }
+}
+
+int main()
+{
+    char ch;
+    cout<<"Enter the charactor: ";
+    cin>>ch;
+    
+    vovels(ch);
+
+    return 0;
+}
+
+ ____________________________________________________________________________________________________________________
+5.agar user ki age 0-5 "child" 6-12 "young age" 13-19 "teenage" 20-50 "middle age" greater than 51 "senior citizen"
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void seniorcitizen(int age)
+{
+    if(age>=51) cout<< "senior citizen";
+    else cout<<  "invalid age";
+}
+
+void middleage(int age)
+{
+    if(age>=20 && age<=50) cout<< "middle age";
+    else  seniorcitizen(age);
+}
+
+void teenage(int age)
+{
+    if(age>=13 && age<=19) cout<< "teenage ";
+    else  middleage(age);
+}
+
+void young (int age)
+{
+    if(age>=6 && age<=12) cout<< "young ";
+    else  teenage(age);
+}
+
+void child(int age)
+{
+    if(age>=0 && age<=5) cout<< "child";
+    else  young(age);
+}
+
+
+int main()
+{
+    int age;
+    cout<<"Enter the age: ";
+    cin>>age;
+    
+    child(age);
+
+    return 0;
+}
+ ___________________________________________________________________________
+6.if agar user ne input kiya hai
+  1 then ek function call karna hai A() ===> A is printed
+  2 then ek function call karna hai B() ===> B is printed
+  3 then ek function call karna hai C() ===> C is printed
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void c(int n)
+{
+    cout<<" C() ===> C is printed";
+}
+
+void b(int n)
+{
+    cout<<"B() ===> B is printed";
+}
+
+void a(int n)
+{
+    cout<<"A() ===> A is printed";
+}
+
+void call(int n)
+{
+    if(n==1){ a(n); }
+    else if(n==2){ b(n); }
+    else if(n==3){ c(n); }
+    else { cout<<"invalid";}
+}
+
+int main()
+{
+    int n;
+    cout<<"Enter the no: ";
+    cin>>n;
+    
+    call(n);
+
+    return 0;
+}
+
+ ___________________________________________________________________________________________
+
+7. user se ek input lena hai agar wo input ek vowel hota hai to ek function run karna A() ==>A is printed
+    wo input consonant hota hai to function B() ===> B is printed
+    wo input 0 1 2 3 4 5 function C() ===> c is printed
+    wo #$%^&&**(( )) function D() ===> D is printed
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void d(char ch)
+{
+    cout<<" d() ===> d is printed";
+}
+
+void c(char ch)
+{
+    cout<<" C() ===> C is printed";
+}
+
+void b(char ch)
+{
+    cout<<"B() ===> B is printed";
+}
+
+void a(char ch)
+{
+    cout<<"A() ===> A is printed";
+}
+
+
+void specialchar(char ch)
+{
+    if ( (int(ch)>=33 && int(ch)<=47) || (int(ch)>=58 && int(ch)<=64) ||
+       (int(ch)>=91 && int(ch)<=96)||(int(ch)>=123 && int(ch)<=126) )
+       {
+           d(ch);
+       }
+}
+
+void number(char ch)
+{
+    if(ch>='0'&& ch<='9') { c(ch);}
+    else {specialchar(ch);}
+}
+
+void consonent(char ch)
+{
+   // ch=tolower(ch);
+   
+   b(ch);
+}
+
+void vovels(char ch)
+{
+    ch=tolower(ch);
+    
+    if(ch>='a'&&ch<='z')
+    {
+     if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u')
+       {
+           a(ch);
+       }
+       else {consonent(ch);}
+    }
+    else {number(ch);}
+}
+
+
+int main()
+{
+    char ch;
+    cout<<"Enter the no: ";
+    cin>>ch;
+    
+    vovels(ch);
+
+    return 0;
+}
+
+_______________________________________________________________________________________________
+
+8. User se 3 input lena hai, un calculate karna hai sum nikalna hai
+    if agar wo sum even hota hai print karna hai even, odd hota hai to print karna hai odd
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void check(int s)
+{
+    if(s%2==0) cout<<"Even";
+    else cout<<"odd";
+}
+
+void sum(int n1,int n2,int n3)
+{
+    int s=n1+n2+n3;
+    cout<<"total = "<<s<<endl;
+    check(s);
+    
+}
+
+int main() {
+    int n1,n2,n3;
+    cout<<"Enter the number: ";
+    cin>>n1>>n2>>n3;
+    
+    sum(n1,n2,n3);
+
+    return 0;
+}
+
+______________________________________________________________________________________________________________
+
+9. user se 4 input lena hai un ka product nikalna hai agar wo product even hota hai to fir ek function call karna hai aur usme A is printed likhna hai. agar wo product odd hota hai to fir ek dusra function call hoga aur usme B is printed.
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+void b()
+{
+    cout<<"  B is printed";
+}
+
+void a()
+{
+    cout<<"  A is printed";
+}
+
+void evenodd(int n1,int n2,int n3,int n4)
+{
+    int n=n1*n2*n3*n4;
+    if(n%2==0)
+    {
+        a();
+    }
+    else { b(); }
+}
+
+
+int main()
+{
+    int n1,n2,n3,n4;
+    cout<<"Enter the no: ";
+    cin>>n1>>n2>>n3>>n4;
+    
+    evenodd(n1,n2,n3,n4);
+
+    return 0;
+}
+
+_________________________________________________________________________________________
+
+
+10.user se 3 input lena hai, unka sum nikalna hai ab agar wo sum even hota hai then last 3 input mai se jo max tha uska answer batana hai
+   Aur agar sum odd hai fir un tino number ka product(multiplication) nikalna hai
+
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int maxamong(int n1,int n2,int n3)
+{
+    if(n1>n2 && n1>n3) 
+    {  return n1;  
+    }
+     else if(n2>n1 && n2>n3) 
+     { return n2; 
+     }
+     else {
+         return n3;
+     }
+}
+int product(int n1,int n2,int n3)
+{
+    int n=n1*n2*n3;
+    return n;
+}
+
+int sum(int n1,int n2,int n3)
+{
+    int n=n1+n2+n3;
+    if(n%2==0)
+    {
+        return maxamong(n1,n2,n3);
+    }
+    else { 
+        return product(n1,n2,n3); 
+        
+    }
+}
+
+
+int main()
+{
+    int n1,n2,n3;
+    cout<<"Enter the no: ";
+    cin>>n1>>n2>>n3;
+    
+    int result=sum(n1,n2,n3);
+    cout<<"result "<<result<<endl;
+
+    return 0;
+}
